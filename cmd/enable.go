@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 
@@ -41,7 +40,7 @@ var enableCmd = &cobra.Command{
 
 		// write ~/.vault
 		content := fmt.Sprintf("token_helper = \"%s\"", filepath.ToSlash(bin))
-		return ioutil.WriteFile(path, []byte(content), 0640)
+		return os.WriteFile(path, []byte(content), 0640)
 	},
 }
 

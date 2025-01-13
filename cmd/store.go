@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"io/ioutil"
+	"io"
 	"os"
 	"strings"
 
@@ -31,7 +31,7 @@ var storeCmd = &cobra.Command{
 			vaultAddr += vaultNamespace
 		}
 
-		stdin, err := ioutil.ReadAll(os.Stdin)
+		stdin, err := io.ReadAll(os.Stdin)
 		if err != nil {
 			return errors.Wrap(err, "Failed to read token from STDIN")
 		}

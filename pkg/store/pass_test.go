@@ -1,7 +1,6 @@
 package store_test
 
 import (
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -30,7 +29,7 @@ func setup(t *testing.T) (string, func(t *testing.T)) {
 		//https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=847206
 		tmp = "/tmp"
 	}
-	tmpdir, err := ioutil.TempDir(tmp, "vault-token-helper-pass-test")
+	tmpdir, err := os.MkdirTemp(tmp, "vault-token-helper-pass-test")
 	require.Nil(t, err)
 
 	// Create a temporary GPG dir
